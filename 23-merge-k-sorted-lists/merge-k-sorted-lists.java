@@ -37,12 +37,10 @@ class Solution {
         
         masterloop:
         while(true){
-            // if()
 
             for(int i=0; i<lists.length; i++){
                 ListNode node = nextNode[i];
-                if(node == null) continue;
-                if(node.val <= min.val){
+                if(node != null && node.val <= min.val){
                     min = node;
                     minListId = i;
                     // System.out.println(node.val + " " + min.val + " " + minListId);
