@@ -18,7 +18,7 @@ class Solution {
             for(int i=0; i<nums.length; i++){
                 if(nums[i] > 0)
                     nums[i] -= a[x];
-                System.out.println(nums[i] + ", ");
+                // System.out.println(nums[i] + ", ");
             }
 
             stopFlag = 1;
