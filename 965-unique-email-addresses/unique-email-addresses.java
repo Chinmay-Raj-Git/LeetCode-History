@@ -23,7 +23,7 @@ class Solution {
                 else if(plusFlag == 0 && atFlag == 0)
                     s.append(c);
             }
-            System.out.println(s.toString());
+            // System.out.println(s.toString());
             res.add(s.toString());
         }
 
