@@ -17,12 +17,11 @@ class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         Queue<TreeNode> q = new LinkedList<>();
         List<List<Integer>> res = new ArrayList<>();
-        TreeNode temp = root;
 
-        if(temp == null)
+        if(root == null)
             return res;
 
-        q.offer(temp);
+        q.offer(root);
         while(!q.isEmpty()){
             int numOfNodes = q.size();
             List<Integer> subL = new ArrayList<>();
