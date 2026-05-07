@@ -9,15 +9,16 @@
  */
 public class Codec {
 
-    String s = "";
+    StringBuilder s = new StringBuilder();
     int i = 0;
     public void encode(TreeNode root){
         if(root == null){
-            s += "null,";
+            s.append("null,");
             return;
         }
 
-        s += root.val + ",";
+        s.append(root.val);
+        s.append(",");
         encode(root.left);
         encode(root.right);
     }
@@ -26,7 +27,7 @@ public class Codec {
     public String serialize(TreeNode root) {
         encode(root);
         // System.out.println(s);
-        return s;
+        return s.toString();
     }
 
     // Decodes your encoded data to tree.
