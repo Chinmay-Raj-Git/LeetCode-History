@@ -12,14 +12,15 @@ class Solution {
         int res[] = new int[nums.length];
         int left = 0;
         int right = nums.length - greater;
+        int mid = lesser;
         for(int i=0; i<nums.length; i++){
             if(nums[i] < pivot)
                 res[left++] = nums[i];
             else if(nums[i] > pivot)
                 res[right++] = nums[i];
+            else
+                res[mid++] = nums[i];
         }
-        for(int i=1; i<=p; i++)
-            res[left++] = pivot;
 
         return res;
     }
