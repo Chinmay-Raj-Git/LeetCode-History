@@ -38,7 +38,8 @@ class Solution {
                     if(vis.contains(nei))
                         continue;
                     
-                    map.put(nei, getEdges(nei, set));
+                    if(!map.containsKey(nei))
+                        map.put(nei, getEdges(nei, set));
                     vis.add(nei);
                     q.add(nei);
                 }
