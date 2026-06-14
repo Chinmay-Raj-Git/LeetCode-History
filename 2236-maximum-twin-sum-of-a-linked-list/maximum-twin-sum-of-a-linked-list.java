@@ -27,7 +27,7 @@ class Solution {
         int maxSum = 0;
         for(Map.Entry<Integer, Integer> e : map.entrySet()){
             int me = e.getKey();
-            if(me > (n/2)) break;
+            // if(me > (n/2)) break;
 
             int twin = n-1-me;
 
