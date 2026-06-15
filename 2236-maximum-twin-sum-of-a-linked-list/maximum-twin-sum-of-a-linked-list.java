@@ -10,31 +10,42 @@
  */
 class Solution {
     public int pairSum(ListNode head) {
-        ListNode temp = head;
+        ListNode p1 = head;
         int n = 0;
-        while(temp != null){
-            temp = temp.next;
+        while(p1 != null){
+            p1 = p1.next;
             n++;
         }
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-        temp = head;
-        for(int i=0; i<n; i++){
-            map.put(i, temp.val);
-            temp = temp.next;
+        ListNode p2 = head;
+        ListNode temp = p2;
+        for(int i=0; i<n/2; i++){
+            temp = p2;
+            p2 = p2.next;
         }
 
-        int maxSum = 0;
-        for(Map.Entry<Integer, Integer> e : map.entrySet()){
-            int me = e.getKey();
-            // if(me > (n/2)) break;
+        // if(n==2) return p1.val+p2.val;
 
-            int twin = n-1-me;
+        ListNode prev = p2;
+        ListNode cur = prev.next;
+        prev.next = null;
+        while(cur != null){
+            ListNode next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+        temp.next = prev;
 
-            maxSum = Math.max(maxSum, map.get(me)+map.get(twin));
+        p1 = head;
+        p2 = temp.next;
+        int max = 0;
+        while(p2 != null){
+            max = Math.max(max, p1.val+p2.val);
+            p1 = p1.next;
+            p2 = p2.next;
         }
 
-
-        return maxSum;
+        return max;
     }
 }
