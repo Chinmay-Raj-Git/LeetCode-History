@@ -4,8 +4,8 @@ class Solution {
 
         for(char c : s.toCharArray()){
             if(c == '*'){
-                int len = sb.length();
-                if(len > 0) sb.delete(len-1, len);
+                if (sb.length() != 0)
+                    sb.deleteCharAt(sb.length() - 1);
             }
             else if(c == '#'){
                 sb.append(sb.toString());
