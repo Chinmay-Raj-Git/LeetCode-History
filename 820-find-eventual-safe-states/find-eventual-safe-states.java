@@ -1,35 +1,32 @@
 class Solution {
-    boolean v[];
-    boolean pv[];
+    int state[];
     public List<Integer> eventualSafeNodes(int[][] graph) {
         List<Integer> res = new ArrayList<>();
 
-        for(int i=0; i<graph.length; i++){
-            res.add(i);
-        }
-
-        v = new boolean[graph.length];
-        pv = new boolean[graph.length];
+        state = new int[graph.length];
 
         for(int i=0; i<graph.length; i++){
-            if(!dfs(i, graph)) res.remove(Integer.valueOf(i));
+            if(dfs(i, graph)) res.add(i);
         }
 
         return res;
     }
 
     private boolean dfs(int node, int[][] graph){
-        v[node] = true;
-        pv[node] = true;
+        if(state[node] == 1) return false;
+        if(state[node] == 3) return false;
+        if(state[node] == 2) return true;
+
+        state[node] = 1;
 
         for(int adj : graph[node]){
-            if(!v[adj]){
-                if(!dfs(adj, graph)) return false;
+            if(!dfs(adj, graph)){
+                state[node] = 3;
+                return false;
             }
-            else if(pv[adj]) return false;
         }
 
-        pv[node] = false;
+        state[node] = 2;
         return true;
     }
 }
