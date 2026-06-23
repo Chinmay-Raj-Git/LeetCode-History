@@ -2,6 +2,7 @@ class Solution {
     public int[] findOrder(int n, int[][] graph) {
         List<List<Integer>> g = new ArrayList<>();
         int[] res = new int[n];
+        int[] ind = new int[n];
 
         for (int i=0; i<n; i++) {
             g.add(new ArrayList<>());
@@ -9,15 +10,9 @@ class Solution {
 
         for(int i=0; i<graph.length; i++){
             g.get(graph[i][1]).add(graph[i][0]);
+            ind[graph[i][0]]++;
         }
 
-        int[] ind = new int[n];
-
-        for(int i=0; i<n; i++) {
-            for(int node : g.get(i)){
-                ind[node]++;
-            }
-        }
 
         Queue<Integer> q = new LinkedList<>();
         for(int i=0; i<n; i++) {
