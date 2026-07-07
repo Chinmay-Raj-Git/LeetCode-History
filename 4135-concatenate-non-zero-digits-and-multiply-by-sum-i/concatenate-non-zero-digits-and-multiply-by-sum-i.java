@@ -1,8 +1,8 @@
 class Solution {
     public long sumAndMultiply(int n) {
         if(n == 0) return 0;
-        
-        String s = String.valueOf(n);
+
+        StringBuilder s = new StringBuilder(String.valueOf(n));
         StringBuilder sb = new StringBuilder();
         long sum = 0;
 
