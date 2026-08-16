@@ -1,19 +1,21 @@
 class Solution {
     public String lastNonEmptyString(String s) {
-        Map<Character, Integer> map = new HashMap<>();
+        int[] freq = new int[26];
 
-        for(char c : s.toCharArray()){
-            map.put(c, map.getOrDefault(c, 0) + 1);
-        }
+        for(char c : s.toCharArray())
+            freq[c-'a']++;
 
-        int max = Collections.max(map.values());
+        int max = freq[0];
+        for(int f : freq)
+            max = Math.max(max, f);
+        
         StringBuilder res = new StringBuilder();
 
         for(int i=s.length()-1; i>=0; i--){
             char c = s.charAt(i);
-            if(map.get(c) == max){
+            if(freq[c-'a'] == max){
                 res.append(c);
-                map.put(c, 0);
+                freq[c-'a'] = 0;
             }
         }
 
