@@ -5,13 +5,11 @@ class Solution {
             sum += n;
 
         if(sum%2 != 0) return false;
+        int target = sum / 2;
 
         int[][] dp = new int[nums.length+1][sum];
         for(int[] d : dp)
             Arrays.fill(d, -1);
-
-
-        int target = sum / 2;
 
         return recur(0, 0, target, nums, dp);
     }
