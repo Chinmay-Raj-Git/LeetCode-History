@@ -7,7 +7,7 @@ class Solution {
         if(sum%2 != 0) return false;
         int target = sum / 2;
 
-        int[][] dp = new int[nums.length+1][sum];
+        int[][] dp = new int[nums.length+1][target+1];
         for(int[] d : dp)
             Arrays.fill(d, -1);
 
@@ -22,8 +22,13 @@ class Solution {
             if(dp[i][sum] == 0) return false;
             else return true;
 
-        boolean include = recur(i+1, sum+nums[i], target, nums, dp);
-        boolean exclude = recur(i+1, sum, target, nums, dp);
+        boolean include = false;
+        if(sum+nums[i] <= target) 
+            include = recur(i+1, sum+nums[i], target, nums, dp);
+
+        boolean exclude = false;    
+        if(!include)
+            exclude = recur(i+1, sum, target, nums, dp);
 
         if(include || exclude)
             dp[i][sum] = 1;
