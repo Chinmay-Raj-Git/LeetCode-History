@@ -4,7 +4,6 @@ class Solution {
         for(int x : nums) present[x] = true;
         
         List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> cur = new ArrayList<>();
         System.out.println(nums.length);
 
         int start = -1;
@@ -13,15 +12,12 @@ class Solution {
             if(!present[i]){
                 if(start == -1){
                     start = i;
-                    cur.add(start);
                 }
             }
             else{
                 if(start != -1){
                     end = i-1;
-                    cur.add(end);
-                    ans.add(cur);
-                    cur = new ArrayList<>();
+                    ans.add(Arrays.asList(start, end));
                     start = -1;
                 }
             }
@@ -29,8 +25,7 @@ class Solution {
 
         if(start != -1){
             end = upper;
-            cur.add(end);
-            ans.add(cur);
+            ans.add(Arrays.asList(start, end));
         }
         
         // System.out.println(ans);
