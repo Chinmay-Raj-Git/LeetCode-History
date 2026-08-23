@@ -10,17 +10,20 @@ class Solution {
         int start = -1;
         int end = -1;
         for(int i=lower; i<=upper; i++){
-            if(!present[i] && start == -1){
-                start = i;
-                cur.add(start);
+            if(!present[i]){
+                if(start == -1){
+                    start = i;
+                    cur.add(start);
+                }
             }
-            else if(present[i] && start != -1){
-                end = i-1;
-                cur.add(end);
-                ans.add(cur);
-                cur = new ArrayList<>();
-                
-                start = -1;
+            else{
+                if(start != -1){
+                    end = i-1;
+                    cur.add(end);
+                    ans.add(cur);
+                    cur = new ArrayList<>();
+                    start = -1;
+                }
             }
         }
 
